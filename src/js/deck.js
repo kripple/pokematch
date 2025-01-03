@@ -1,5 +1,4 @@
 class Deck {
-
   constructor(cards) {
     this.cards = cards;
   }
@@ -22,14 +21,14 @@ class Deck {
   }
 
   toString() {
-    let displayStrings = []
+    let displayStrings = [];
     this.cards.forEach((card, index) => {
       displayStrings.push(card.toString(index));
       // if (this.isLastCardInRow(index)) {
       //   displayStrings.push(NEWLINE);
       // }
     });
-    return displayStrings.join("\n");
+    return displayStrings.join('\n');
   }
 
   numCardsFaceUp() {
@@ -63,7 +62,7 @@ class Deck {
   isLastCardInRow(index) {
     let position = index + 1;
     let numRows = this.getNumRows();
-    return (position % numRows) === 0;
+    return position % numRows === 0;
   }
 
   getNumRows() {

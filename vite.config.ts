@@ -7,14 +7,14 @@ import { defineConfig } from 'vite';
 
 dns.setDefaultResultOrder('verbatim');
 
-// const gitString = (type: 'branch' | 'hash') => {
-//   const command =
-//     type === 'branch'
-//       ? 'git branch --show-current'
-//       : 'git rev-parse --short HEAD';
-//   const value = childProcess.execSync(command).toString().trimEnd();
-//   return JSON.stringify(value);
-// };
+const gitString = (type: 'branch' | 'hash') => {
+  const command =
+    type === 'branch'
+      ? 'git branch --show-current'
+      : 'git rev-parse --short HEAD';
+  const value = childProcess.execSync(command).toString().trimEnd();
+  return JSON.stringify(value);
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,10 +23,10 @@ export default defineConfig({
     outDir: 'docs',
   },
   clearScreen: false,
-  // define: {
-  //   'import.meta.env.APP_VERSION': gitString('hash'),
-  //   'import.meta.env.GIT_BRANCH': gitString('branch'),
-  // },
+  define: {
+    'import.meta.env.APP_VERSION': gitString('hash'),
+    'import.meta.env.GIT_BRANCH': gitString('branch'),
+  },
   plugins: [react()],
   resolve: {
     alias: {
