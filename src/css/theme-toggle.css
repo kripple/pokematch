@@ -1,0 +1,78 @@
+/* adapted from https://codepen.io/timsilva/pen/xxVzRVr */
+
+:root {
+  --gray-35: #2d2f31;
+  --gray-40: #404346;
+  --gray-70: #dce0e3;
+}
+
+.theme-toggle {
+  background: var(--gray-70);
+  border: none;
+  border-radius: 14px;
+  display: inline-block;
+  height: 28px;
+  margin: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 48px;
+}
+.theme-toggle:before {
+  background: var(--gray-35);
+  border-radius: 12px;
+  content: '';
+  display: block;
+  height: 20px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  width: 20px;
+}
+.theme-toggle:after {
+  background: var(--gray-70);
+  border-radius: 16px;
+  content: '';
+  display: block;
+  height: 32px;
+  position: absolute;
+  right: 2px;
+  top: -2px;
+  width: 32px;
+}
+
+input:checked ~ .theme .theme-toggle {
+  background: var(--gray-40);
+}
+input:checked ~ .theme .theme-toggle:before {
+  background: var(--gray-70);
+  left: 24px;
+}
+input:checked ~ .theme .theme-toggle:after {
+  display: none;
+}
+
+.label-dark,
+.label-light {
+  color: var(--text-color);
+  font-family: 'Arial';
+  font-size: 11px;
+  min-width: 32px;
+  padding: 8px 12px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.theme-toggle-label {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  user-select: none;
+}
+.label-dark {
+  letter-spacing: -0.15px;
+}
+.label-light {
+  letter-spacing: -0.031px;
+}

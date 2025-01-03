@@ -1,0 +1,33 @@
+:root {
+  --px: 6px;
+  --px-border: calc(var(--px) * 2);
+}
+
+.header .contents {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.header .contents > * {
+  display: inline-flex;
+}
+
+.header :is(.theme-toggle-label, svg) {
+  border-radius: var(--px-border);
+  box-sizing: content-box;
+}
+
+.header svg {
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  fill: var(--text-accent-color);
+  padding: var(--px);
+}
+
+.header .theme-toggle-label:hover {
+  background-color: var(--hover-color);
+  border-color: var(--hover-border-color);
+}

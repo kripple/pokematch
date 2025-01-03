@@ -1,0 +1,72 @@
+:root {
+  --yellow: #ffde00;
+  --poke-purple: #3b4cca;
+  --purple: #252d83;
+  --min-page-width: 300px;
+  --grid-size: 4;
+}
+
+/* dark mode (default) */
+.theme {
+  --theme-color: #2c2d3d;
+  --text-color: #b6bec9;
+  --title-color: var(--yellow);
+  --card-color: var(--purple);
+  --border-color: var(--yellow);
+}
+
+/* light mode */
+input:checked ~ .theme {
+  --theme-color: #ccccff;
+  --text-color: #303741;
+  --title-color: var(--purple);
+  --card-color: var(--yellow);
+  --border-color: var(--poke-purple);
+}
+
+.theme {
+  background-color: var(--theme-color);
+  color: var(--text-color);
+}
+
+#theme-toggle {
+  display: none;
+}
+
+.app {
+  grid-template-rows: max-content 1fr max-content;
+}
+
+.footer {
+  font-size: 12px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.header,
+.main,
+.footer {
+  display: block;
+  padding: 16px;
+  position: relative;
+}
+
+.contents {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.header > .contents {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 24px;
+  padding: 16px;
+}
+
+.main > .contents {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}

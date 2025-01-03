@@ -1,0 +1,84 @@
+html,
+body,
+#root,
+.theme {
+  --min-page-width: 300px;
+  box-sizing: border-box;
+  display: grid;
+  margin: 0;
+  min-height: 100vh;
+  min-width: var(--min-page-width);
+  padding: 0;
+  position: relative;
+}
+
+html {
+  overflow-y: scroll;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-attachment: scroll;
+}
+
+:root {
+  --dark-blue: hsla(210, 100%, 23%, 0.2);
+}
+
+.theme {
+  --theme-color: rgb(15, 18, 20);
+  --text-color: #b6bec9;
+  --text-accent-color: rgb(102, 179, 255);
+  --border-color: hsla(210, 14%, 22%, 0.5);
+  --box-shadow: hsla(210, 14%, 22%, 0.3) 0 1px 0 inset,
+    hsl(200, 10%, 4%) 0 -1px 0 inset, hsl(200, 10%, 4%) 0 1px 2px 0;
+  --hover-color: rgba(29, 33, 38, 0.8);
+  --hover-border-color: rgb(48, 56, 64);
+  --background-color: var(--dark-blue);
+  --background-gradient: radial-gradient(
+    farthest-corner circle at 0% 0%,
+    var(--dark-blue) 0%,
+    hsl(210, 14%, 7%) 100%
+  );
+  /* --color-1: #beeffa;
+  --color-2: #4cc9f0;
+  --color-3: #4361ee; */
+}
+
+html[data-theme='light'],
+#root > input:checked ~ .theme {
+  --theme-color: rgba(255, 255, 255, 0.8);
+  --text-color: #303741;
+  --text-accent-color: rgb(0, 115, 230);
+  --border-color: rgb(217, 222, 226);
+  --box-shadow: #ffffff 0 1px 0 inset, hsla(215, 15%, 89%, 0.4) 0 -1px 0 inset,
+    hsla(215, 15%, 89%, 0.5) 0 1px 2px 0;
+  --hover-color: rgb(246, 247, 248);
+  --hover-border-color: rgb(202, 208, 216);
+  --background-color: hsl(215, 15%, 97%);
+  --background-gradient: radial-gradient(
+    farthest-corner circle at 0% 0%,
+    hsl(215, 15%, 97%) 0%,
+    hsl(210, 100%, 96%) 100%
+  );
+  /* --color-1: #3f37c9;
+  --color-2: #7209b7;
+  --color-3: #480ca8; */
+}
+
+.theme {
+  background-color: var(--theme-color);
+  color: var(--text-color);
+}
+
+:is(html[data-theme='light'], #root > input:checked ~ .theme) #light-mode,
+#dark-mode {
+  display: none;
+}
+
+:is(html[data-theme='light'], #root > input:checked ~ .theme) #dark-mode,
+#light-mode {
+  display: inline-flex;
+}
