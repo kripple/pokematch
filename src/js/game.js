@@ -92,11 +92,16 @@ class Game {
 
   displayWinMessage() {
     this.container.innerHTML = `
-      ${this.container.innerHTML} 
-      <div class="win-message">You Win!</div>
-      <button id="new-game-button" type="button">New Game</button>
+      ${this.container.innerHTML}
+      <div class="win-modal">
+        <div class="contents">
+          <div class="win-message">You Win!</div>
+          <button id="new-game-button" type="button">New Game</button>
+        </div>
+      </div>
     `;
-    document.getElementById("new-game-button").addEventListener('click', (event) => this.newGame());
+    document
+      .getElementById('new-game-button')
+      .addEventListener('click', (event) => this.newGame());
   }
 }
-
