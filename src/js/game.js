@@ -1,5 +1,4 @@
 class Game {
-
   constructor(container, containers) {
     this.container = container;
     this.containers = containers;
@@ -19,10 +18,10 @@ class Game {
   }
 
   createCards(symbols) {
-    let cards = []
+    let cards = [];
     for (let i = 0; i < symbols.length; i++) {
-      cards[i] = new Card(symbols[i])
-      cards[i + symbols.length] = new Card(symbols[i])
+      cards[i] = new Card(symbols[i]);
+      cards[i + symbols.length] = new Card(symbols[i]);
     }
     return cards;
   }
@@ -30,16 +29,22 @@ class Game {
   addEventListeners() {
     for (let i = 0; i < this.containers.length; i++) {
       if (this.isFaceDown(this.containers[i])) {
-        this.containers[i].addEventListener('click', (event) => this.onClick(event.target.id));
+        this.containers[i].addEventListener('click', (event) =>
+          this.onClick(event.target.id),
+        );
       }
     }
   }
 
   onClick(cardId) {
-    if (this.deck.twoCardsAreFaceUp()) { return }
+    if (this.deck.twoCardsAreFaceUp()) {
+      return;
+    }
     this.flipCard(cardId);
 
-    if (this.deck.oneCardIsFaceUp()) { return }
+    if (this.deck.oneCardIsFaceUp()) {
+      return;
+    }
     let cards = this.deck.getFaceUpCards();
     setTimeout(() => {
       this.checkForMatch(cards);
@@ -63,8 +68,10 @@ class Game {
   }
 
   isMatch(cards) {
-    if (cards.length !== 2) { return false }
-    return cards[0].isMatch(cards[1])
+    if (cards.length !== 2) {
+      return false;
+    }
+    return cards[0].isMatch(cards[1]);
   }
 
   setMatched(cards) {
