@@ -1,9 +1,14 @@
 :root {
   --yellow: #ffde00;
+  --light-purple: #ccccff;
   --poke-purple: #3b4cca;
   --purple: #252d83;
-  --min-page-width: 300px;
   --grid-size: 4;
+  --padding: 16px;
+}
+
+html {
+  background-color: var(--light-purple);
 }
 
 /* dark mode (default) */
@@ -18,7 +23,7 @@
 /* light mode */
 html[data-theme='light'],
 input:checked ~ .theme {
-  --theme-color: #ccccff;
+  --theme-color: var(--light-purple);
   --text-color: #303741;
   --title-color: var(--purple);
   --card-color: var(--yellow);
@@ -45,10 +50,9 @@ input:checked ~ .theme {
 }
 
 .header,
-.main,
 .footer {
   display: block;
-  padding: 16px;
+  padding: var(--padding);
   position: relative;
 }
 
@@ -63,11 +67,24 @@ input:checked ~ .theme {
   flex-direction: column;
   flex-wrap: nowrap;
   gap: 24px;
-  padding: 16px;
+  padding: var(--padding);
 }
 
 .main > .contents {
   display: flex;
   height: 100%;
   justify-content: center;
+  padding: var(--padding);
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --padding: 10px;
+  }
+  .header > .contents {
+    gap: 18px;
+  }
+  .header {
+    padding-bottom: 2px;
+  }
 }
