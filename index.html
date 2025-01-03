@@ -12,6 +12,30 @@
     <link rel="icon" href="/src/images/master-ball.png" />
     <title>Pokématch</title>
 
+    <script>
+      (function setDataTheme() {
+        function storageAvailable(type) {
+          try {
+            const storage = window[type];
+            const testKey = '__temp';
+            storage.setItem(testKey, testKey);
+            storage.removeItem(testKey);
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+        function getItem(key) {
+          return storageAvailable('localStorage') && localStorage.getItem(key);
+        }
+        if (getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
     <link rel="stylesheet" href="/src/css/theme.css" />
     <link rel="stylesheet" href="/src/css/theme-toggle.css" />
     <link rel="stylesheet" href="/src/css/root.css" />
@@ -91,6 +115,47 @@
       console.log(
         'Icons by FlatIcon - https://www.flaticon.com/packs/pokemon-go',
       );
+    </script>
+
+    <script>
+      (function saveThemePreference() {
+        function storageAvailable(type) {
+          try {
+            const storage = window[type];
+            const testKey = '__temp';
+            storage.setItem(testKey, testKey);
+            storage.removeItem(testKey);
+            return true;
+          } catch (error) {
+            return false;
+          }
+        }
+        const available = storageAvailable('localStorage');
+        function setItem(key, value) {
+          if (!available) return;
+          localStorage.setItem(key, value);
+        }
+        const checkbox = document.getElementById('theme-toggle');
+        if (!(checkbox instanceof HTMLInputElement)) {
+          console.info('missing theme toggle');
+          return;
+        }
+        const savedTheme = document.documentElement.getAttribute('data-theme');
+        if (savedTheme) {
+          if (savedTheme === 'light') {
+            checkbox.click();
+          }
+          document.documentElement.removeAttribute('data-theme');
+        }
+        checkbox.addEventListener('change', (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLInputElement)) {
+            console.info('unexpected input');
+            return;
+          }
+          setItem('theme', target.checked ? 'light' : 'dark');
+        });
+      })();
     </script>
   </body>
 </html>

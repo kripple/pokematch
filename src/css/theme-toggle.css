@@ -42,14 +42,14 @@
   width: 32px;
 }
 
-input:checked ~ .theme .theme-toggle {
+:is(html[data-theme='light'], input:checked ~ .theme) .theme-toggle {
   background: var(--gray-40);
 }
-input:checked ~ .theme .theme-toggle:before {
+:is(html[data-theme='light'], input:checked ~ .theme) .theme-toggle:before {
   background: var(--gray-70);
   left: 24px;
 }
-input:checked ~ .theme .theme-toggle:after {
+:is(html[data-theme='light'], input:checked ~ .theme) .theme-toggle:after {
   display: none;
 }
 

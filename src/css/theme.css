@@ -16,6 +16,7 @@
 }
 
 /* light mode */
+html[data-theme='light'],
 input:checked ~ .theme {
   --theme-color: #ccccff;
   --text-color: #303741;
